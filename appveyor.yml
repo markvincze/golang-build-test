@@ -1,0 +1,28 @@
+version: "{build}"
+
+platform: x64
+
+branches:
+  only:
+    - master
+
+skip_tags: true
+
+clone_folder: c:\gopath\src\github.com\markvincze\golang-build-test
+
+environment:
+  GOPATH: c:\gopath
+
+install:
+  - echo %PATH%
+  - echo %GOPATH%
+  - set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
+    #- rmdir c:\go /s /q
+    #- appveyor DownloadFile https://storage.googleapis.com/golang/go1.6.2.windows-amd64.msi
+    #- msiexec /i go1.6.2.windows-amd64.msi /q
+  - go version
+  - go env
+    #- mkdir c:\gopath
+
+build_script:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/markvincze/golang-build-test/master/build.ps1'))
