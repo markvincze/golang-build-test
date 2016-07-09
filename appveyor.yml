@@ -33,7 +33,7 @@ artifacts:
     name: binary
 
 deploy:
-  release: hello-v$(appveyor_build_version)
+  release: hello-$(appveyor_build_version)
   description: 'This is a test release'
   provider: GitHub
   auth_token:
