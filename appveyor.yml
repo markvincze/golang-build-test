@@ -26,3 +26,7 @@ install:
 
 build_script:
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/markvincze/golang-build-test/master/build.ps1'))
+
+artifacts:
+  - path: hello
+    name: binary
